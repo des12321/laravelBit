@@ -44,9 +44,16 @@ class RouteServiceProvider extends ServiceProvider
 
     /**
      * Get routes
+<<<<<<< HEAD
      * @param $dir
      * @return mixed
      */
+=======
+     *
+     * @param $dir
+     */
+
+>>>>>>> 367ceadbbbad55bd2936c0e963b591a64b125a68
     public function getRoutes($dir)
     {
         if ($dh = opendir($dir)) {
@@ -54,7 +61,11 @@ class RouteServiceProvider extends ServiceProvider
                 if (!is_dir($dir . $file) && $file != "." && $file != "..") {
                     require $dir . $file;
                 } elseif ($file != "." && $file != "..") {
+<<<<<<< HEAD
                     self::get_routes($dir . $file . '/');
+=======
+                    self::getRoutes($dir . $file . '/');
+>>>>>>> 367ceadbbbad55bd2936c0e963b591a64b125a68
                 }
             }
             closedir($dh);
@@ -90,5 +101,9 @@ class RouteServiceProvider extends ServiceProvider
             ->group(base_path('routes/api.php'));
     }
 
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 367ceadbbbad55bd2936c0e963b591a64b125a68
 }
