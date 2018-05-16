@@ -7,15 +7,13 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
-class UserController extends BaseController
+class AuthController extends BaseController
 {
-    public function showLogin()
+ 
+    public function loginUser(Request $request)
     {
-        return view('auth.login');
-    }
-
-    public function showRegistration()
-    {
-        return view('auth.registration');
+      $username = $request->username;
+      $passaword =   $request->password;
+    
     }
 }
