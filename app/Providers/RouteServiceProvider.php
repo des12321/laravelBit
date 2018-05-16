@@ -42,10 +42,10 @@ class RouteServiceProvider extends ServiceProvider
         //
     }
 
-/**
+    /**
      * Get routes
-     *
      * @param $dir
+     * @return mixed
      */
     public function getRoutes($dir)
     {
