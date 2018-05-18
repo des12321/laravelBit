@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use anlutro\cURL\Request;
 use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -15,7 +15,7 @@ class UserController extends BaseController
     {
         $cookieBank = $request->cookie("businetbybinanceusernamevalueusername");
         if (!empty($cookieBank)) {
-            return redirect('/dashboard');
+            return view('core.lobby');
         } else {
             $cookie = Cookie::forget('businetbybinanceusernamevalueusername');
             $response = new \Illuminate\Http\Response(view('auth.login'));

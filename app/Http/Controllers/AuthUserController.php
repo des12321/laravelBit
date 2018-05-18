@@ -46,7 +46,14 @@ class AuthUserController extends Controller
         } catch (Exception $exception) {
 
         }
+    }
 
+    public function logoutUser()
+    {
+        $cookie = Cookie::forget('businetbybinanceusernamevalueusername');
+        $response = new \Illuminate\Http\Response(view('auth.login'));
+        $response->withCookie($cookie);
+        return $response;
     }
 
 }

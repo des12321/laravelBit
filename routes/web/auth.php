@@ -15,3 +15,8 @@ Route::post('loginpost', [
     'as' => 'auth.login',
     'uses' => 'AuthUserController@loginUser'
 ]);
+
+Route::post('Logout', [
+    'as' => 'auth.logout',
+    'uses' => 'AuthUserController@logoutUser'
+]);
