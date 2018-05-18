@@ -11,12 +11,12 @@
 |__________________________________________________________________________
 */
 
-Route::post('loginpost', [
+Route::post('Login', [
     'as' => 'auth.login',
     'uses' => 'AuthUserController@loginUser'
 ]);
 
-Route::post('Logout', [
+Route::get('Logout', [
     'as' => 'auth.logout',
     'uses' => 'AuthUserController@logoutUser'
 ]);
