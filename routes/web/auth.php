@@ -11,18 +11,7 @@
 |__________________________________________________________________________
 */
 
-
-Route::get('registro', [
-    'as' => 'user.register',
-    'uses' => 'UserController@showRegistration'
-]);
-
-Route::get('', [
-    'as' => 'user.login',
-    'uses' => 'UserController@showLogin'
-]);
-
-Route::get('login', [
-    'as' => 'user.login.login',
-    'uses' => 'UserController@showLogin'
+Route::post('loginpost', [
+    'as' => 'auth.login',
+    'uses' => 'AuthUserController@loginUser'
 ]);

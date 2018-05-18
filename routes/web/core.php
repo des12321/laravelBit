@@ -11,7 +11,14 @@
 |
 */
 
-Route::get('', ['middleware' => ['guest'],
-    'as' => 'core.dashboard',
-    'uses' => 'CoreController@showDashboard'
-]);
+/**/
+Route::group(['prefix' => '', 'middleware' => ['authlogin']], function () {
+    Route::get('', [
+        'as' => 'core.dashboard',
+        'uses' => 'CoreController@showDashboard'
+    ]);
+    Route::get('/dashboard', [
+        'as' => 'core.dashboard.inicio',
+        'uses' => 'CoreController@showDashboard'
+    ]);
+});
