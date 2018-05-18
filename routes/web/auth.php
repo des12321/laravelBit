@@ -11,7 +11,7 @@
 |__________________________________________________________________________
 */
 
-Route::post('Login', [
+Route::post('loginpost', [
     'as' => 'auth.login',
     'uses' => 'AuthUserController@loginUser'
 ]);
