@@ -56,13 +56,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </section>
     <!--main content end-->
 </section>
-
+<script src="{{ asset('js/jquery-3.3.1.js') }}"></script>
 <script src="{{ asset('js/bootstrap.js')}}"></script>
 <script src="{{ asset('js/dataTables.bootstrap.min.js')}}"></script>
 <script src="{{ asset('js/jquery.dataTables.min.js')}}"></script>
 <script type="text/javascript">
     $('.dataTableGeneric').dataTable();
 </script>
+
 <script src="{{ asset('js/mdb.min.js')}}"></script>
 <script src="{{ asset('js/popper.min.js')}}"></script>
 <script src="{{ asset('js/jquery.dcjqaccordion.2.7.js')}}"></script>
@@ -73,6 +74,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
 <script src="{{ asset('js/jquery.scrollTo.js')}}"></script>
 <script type="text/javascript" src="{{ asset('js/monthly.js')}}"></script>
+@yield('scripts')
 <!-- //calendar -->
 </body>
 </html>

@@ -26,3 +26,7 @@ Route::get('login', [
     'as' => 'user.login.login',
     'uses' => 'UserController@showLogin'
 ]);
+Route::get('fillTopBanner', [
+    'as' => 'user.fillTopBanner',
+    'uses' => 'UserController@fillTopBanner'
+]);

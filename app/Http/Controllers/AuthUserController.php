@@ -33,10 +33,11 @@ class AuthUserController extends Controller
                 'password' => $passaword
             ];
             $curl = cURL::post($url, $data);
-            \Log::debug('CURL', [$curl]);
 
+            $jsonCurl = json_decode($curl);
+            $idUser = $jsonCurl->ad_user_id;
             if (!empty($curl)) {
-                $cookie_new = cookie('businetbybinanceusernamevalueusername', $username, 60);
+                $cookie_new = cookie('businetbybinanceusernamevalueusername', $idUser, 60);
                 $response = new \Illuminate\Http\Response(view('core.lobby'));
                 $response->withCookie($cookie_new);
                 return $response;
