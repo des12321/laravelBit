@@ -11,7 +11,6 @@
 |__________________________________________________________________________
 */
 
-
 Route::get('registro', [
     'as' => 'user.register',
     'uses' => 'UserController@showRegistration'
@@ -26,7 +25,10 @@ Route::get('login', [
     'as' => 'user.login.login',
     'uses' => 'UserController@showLogin'
 ]);
-Route::get('fillTopBanner', [
+
+Route::group(['prefix' => 'user'], function () {
+	Route::get('fillTopBanner', [
     'as' => 'user.fillTopBanner',
     'uses' => 'UserController@fillTopBanner'
-]);
+	]);
+});

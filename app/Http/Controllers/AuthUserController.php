@@ -20,11 +20,13 @@ class AuthUserController extends Controller
     public function loginUser(Request $request)
     {
 
-        $validator = $request->validate([
+       
+        try {
+             $validator = $request->validate([
             'usernameLogin' => 'required',
             'passwordLogin' => 'required'
-        ]);
-        try {
+            ]);
+             
             $username = \Request::input('usernameLogin');
             $passaword = \Request::input('passwordLogin');
             $url = "http://18.236.104.133/portal/index.php/welcome/getUser";
@@ -36,13 +38,16 @@ class AuthUserController extends Controller
 
             $jsonCurl = json_decode($curl);
             $idUser = $jsonCurl->ad_user_id;
-            if (!empty($curl)) {
+            if (!empty($jsonCurl)) {
                 $cookie_new = cookie('businetbybinanceusernamevalueusername', $idUser, 60);
                 $response = new \Illuminate\Http\Response(view('core.lobby'));
                 $response->withCookie($cookie_new);
                 return $response;
             } else {
-                return $curl;
+               $cookie = Cookie::forget('businetbybinanceusernamevalueusername');
+                $response = new \Illuminate\Http\Response(view('auth.login'));
+                $response->withCookie($cookie);
+                return $response;
             }
 
         } catch (Exception $exception) {

@@ -1,8 +1,8 @@
 @extends('templatelogin')
 @section('styles')
-
 @endsection
 @section ('content-login')
+
     <div class="inner-form">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#tab1" data-toggle="tab">ENTRAR</a></li>
@@ -15,6 +15,24 @@
                     <form id="form-login" action="{{ route('auth.login') }}" method="post"
                           enctype="multipart/form-data">
                         <div class="row">
+                        @if(Session::has('success_message'))
+        <div class="alert alert-success alert-dismissable">
+            <i class="fa fa-check-circle-o alert-icon"></i>
+            <button type="button" class="close" data-dismiss="alert"
+                    aria-hidden="true">&times;
+            </button>
+            <strong>{{ Session::get('success_message') }}</strong>
+        </div>
+    @endif
+    @if(Session::has('error_string'))
+        <div class="alert alert-danger alert-dismissable">
+            <i class="fa fa-check-circle-o alert-icon"></i>
+            <button type="button" class="close" data-dismiss="alert"
+                    aria-hidden="true">&times;
+            </button>
+            <strong>{{ Session::get('error_string') }}</strong>
+        </div>
+    @endif
                             <div class="col-lg-12">
                                 <label>Username</label>
                                 <div class="form-group">
@@ -26,7 +44,7 @@
                             <div class="col-lg-12">
                                 <label>Contraseña</label>
                                 <div class="form-group">
-                                    <input type="password" name="passwordLogin" id="passwordLogin" class="form-control"
+                                    <input type="password" name="passwordLogin" id="passwordLogin" class="form-control input"
                                            placeholder="">
                                 </div>
                             </div>

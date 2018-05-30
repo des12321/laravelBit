@@ -20,11 +20,11 @@
                                                </span>
                                         </div>
                                         <div class="col-md-4">
-                                            <div class="col-md-12">
+                                            <div class="row">
                                                 <p class="center-block">ADVANCED</p>
                                             </div>
-                                            <div class="col-md-12">
-                                                <p class="center-block">100114</p>
+                                            <div class="row">
+                                                <p class="center-block advanceValor" ></p>
                                             </div>
 
                                         </div>
@@ -43,7 +43,7 @@
                                     </div>
                                     <div class="col-md-9">
                                         <p style="font-size:12px;" class="">Dolares</p>
-                                        <h4 class="">0.00000580</h4>
+                                        <h4 class="montoDolares"></h4>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
@@ -54,7 +54,7 @@
                                     </div>
                                     <div class="col-md-9">
                                         <p class="" style="font-size:10px;">BITCOIN</p>
-                                        <h4 class="">0.00000580</h4>
+                                        <h4 class="montoBitCoin"></h4>
                                     </div>
                                 </div>
                             </div>
@@ -448,8 +448,12 @@
         $.ajax({
             url: route,
             dataType: 'json'
-        }).done(function (data) {
-            console.log(data)
+        }).done(function (response) {
+            console.log(response)
+            console.log(response.data)
+            $('.advanceValor').append(response.data.value)
+            $('.montoDolares').append(response.data.biz_saldo_usd)
+            $('.montoBitCoin').append(response.data.biz_saldo_btc)
         }).fail(function () {
             var holo = 2234455;
             console.log(holo)

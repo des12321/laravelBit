@@ -16,7 +16,6 @@ class UserController extends BaseController
     public function showLogin(Request $request)
     {
         $cookieBank = $request->cookie("businetbybinanceusernamevalueusername");
-        \Log::debug('COOKIE BANK', [$cookieBank]);
         if (!empty($cookieBank)) {
             return view('core.lobby');
         } else {
@@ -35,13 +34,27 @@ class UserController extends BaseController
 
     public function fillTopBanner(Request $request)
     {
+        $response = new \Illuminate\Http\Response();
         $cookieUser = $request->cookie("businetbybinanceusernamevalueusername");
-        \Log::debug('NUEVOorden', [$cookieUser]);
-        $urlApi = 'http://18.236.104.133/portal/index.php/welcome/getUserRed/1000398';
-        $url = cURL::buildUrl($urlApi, ['id' => $cookieUser]);
-        $idUser = $request->cookie("businetbybinanceusernamevalueusername");
+    
+        $url = 'http://18.236.104.133/portal/index.php/welcome/getUserRed/' . 1000398;
+
         $curl = cURL::get($url);
-        $curlJson = json_decode($curl);
-        response()->json($curlJson, 200);
+  
+       $curlJson = json_decode($curl);
+        $data= [
+            'data' => $curlJson
+        ];
+       /*$data=[
+        'biz_rango' => 'Bitcoiner',
+        'value' => '1000109',
+        'c_doctype_id' => "10000047",
+        'biz_saldo_usd' => '0.00',
+        'biz_saldo_btc' => '0.00'
+       ];
+       $res = [
+        'data' => $data
+       ];*/
+       return response()->json($data, 200);
     }
 }
